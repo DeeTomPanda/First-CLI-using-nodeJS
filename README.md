@@ -187,4 +187,4 @@ yyyy-mm-dd Pending : 1 Completed : 4
 
 ### My Results
 Program runs @ 6.936(approx 7)seconds in Ubuntu 20.04
-https://user-images.githubusercontent.com/76088773/104048254-ee876a00-5208-11eb-97cb-fee59574f38f.png
+![image](https://user-images.githubusercontent.com/76088773/104048254-ee876a00-5208-11eb-97cb-fee59574f38f.png)
