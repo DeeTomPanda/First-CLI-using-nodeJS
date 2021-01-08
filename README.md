@@ -185,6 +185,5 @@ $ ./todo report
 yyyy-mm-dd Pending : 1 Completed : 4
 ```
 
-## Improving README.md
-
-If you feel like we are missing out steps, feel free to make a pull request. [Github Repo](https://github.com/nseadlc-2020/package-todo-cli-task)
+### My Results
+Program runs @ seconds in Ubuntu 20.04
