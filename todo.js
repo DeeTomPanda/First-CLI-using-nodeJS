@@ -1,4 +1,4 @@
-//Program For Corona Safe Fellowhip 2020...
+//Program For Corona Safe Felloswhip 2020...
 //My first ever try with Nodejs
 
 const commands=["add","del","done","ls","report","help"];
@@ -32,6 +32,8 @@ const del_=()=>
 		var read=fs.readFileSync("todo.txt","utf-8");
 		if(argss[3]!=0 && argss[3]<=((read.split("\n")).length)-1)
 		{
+		//read.split('\n') =>To convert the string to an array with the newline character as seperator
+		//Must be >2 because an empty list will still add a white space and a new line character
 		if(read.split("\n").length>2)
 		{
 		    console.log("DELETED"+argss[3]);
@@ -44,6 +46,7 @@ const del_=()=>
 		    console.log("Deleted todo \#"+argss[3]);
 		    fs.writeFile("todo.txt",read,(err)=>{if (err) throw (err);});
 		}
+		    //Case where the list is empty
 		    else
 			{
 		          read='';
@@ -73,7 +76,6 @@ const report_=()=>
 	}
 	else
 		{var read_todo=0;}
-	//console.log(read_todo);
         if(fs.existsSync("done.txt"))
 	{
 	var read_done=fs.readFileSync("done.txt","utf-8");
@@ -104,13 +106,15 @@ const done_=()=>
 	{
 	var read=fs.readFileSync("todo.txt","utf-8");
 	var myregex=/\,/g;
+	//data here is converted to an array from string and is basically the array element of the specified number
 	var data=(read.split("\n"))[argss[3]-1];
-	if(argss[3]!=0 && argss[3]<=read.split("\n").length-1)
-	{
+	//Condition to check valid inputs
+	//Here the second condition checks the length of the  file data in array form(-1 to eliminate trailing '\n')
+	    if(argss[3]!=0 && argss[3]<=read.split("\n").length-1)
+	    {
 		console.log("Marked todo \#"+argss[3]+" as done.");
-		if(read.split("\n").length>2){
-	           //console.log(read.split("\n").length);
-		   //onsole.log("Marked todo \#"+argss[3]+" as done.");
+		if(read.split("\n").length>2)
+		{
                    read=read.replace(data,'');
                    read=read.split("\n");
 		   read=read.filter(function(e){return e!=undefined;});
@@ -124,11 +128,9 @@ const done_=()=>
                   read='';
 		  fs.writeFile("todo.txt",read,(err)=>{if(err) throw(err);});
 		}
-	}
-	else{console.log("Error: todo \#"+argss[3]+" does not exist.");}
-	var date=new Date().toISOString().slice(0,10);
-	//if(data!=undefined)
-          //{
+	   }
+	   else{console.log("Error: todo \#"+argss[3]+" does not exist.");}
+	   var date=new Date().toISOString().slice(0,10);
 	   data="x "+date+" "+data+"\n";
            if(fs.existsSync("done.txt"))
 	   {
@@ -138,11 +140,9 @@ const done_=()=>
 	   {
 		fs.writeFile("done.txt",data,(err)=>{if (err) throw(err);});
 	   }
-	//}
 	}
-else{
-	console.log("Error: Missing NUMBER for marking todo as done.");
-}
+else
+    {console.log("Error: Missing NUMBER for marking todo as done.");}
 }
 const usage_=()=>{
 var text="StringContaining Usage :-"                   + "\n" +
@@ -154,7 +154,6 @@ var text="StringContaining Usage :-"                   + "\n" +
     "\$ ./todo report           \# Statistics"
 console.log(text);}
 if(argss.length>2 && commands.indexOf(argss[2])!=-1){
-	//console.log(argss[2]);
 switch(argss[2]){
            case "add":
                   add_();
